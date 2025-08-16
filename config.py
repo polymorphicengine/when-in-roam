@@ -1,11 +1,16 @@
 # game configuration
 max_secrets = 8
 
-first_game_repetitions = 4
-second_game_score_condition = 13
+first_game_repetitions = 3
+
+second_game_score_condition = 8
 second_game_limit = 6
-third_game_score_condition = 18
-last_game_score_condition = 21
+
+third_game_score_condition = 13
+
+# amount of points needed for win
+last_game_score_condition = 16
+last_game_limit = 2
 
 # when true, tags can be triggered multiple times
 rescan_possible = False

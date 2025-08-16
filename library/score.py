@@ -26,6 +26,11 @@ def even_second_game():
     blue_score = config.third_game_score_condition
     yellow_score = config.third_game_score_condition
 
+def even_last_game():
+    global blue_score, yellow_score
+    blue_score = config.last_game_score_condition - 1
+    yellow_score = config.last_game_score_condition - 1
+
 def get_score_blue():
     return blue_score
 
