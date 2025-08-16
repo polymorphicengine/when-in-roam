@@ -1,0 +1,82 @@
+<html>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WHEN IN ROAM</title>
+
+    <h1><span>CHOOSE A GAME!</span></h1>
+    <div>
+        <button
+            class="blue"
+            type="button"
+            onclick="window.location.href = '{{ url_for('stretching') }}' ; "
+        >
+            STRETCHING
+        </button>
+        <button
+            class="blue"
+            type="button"
+            onclick="window.location.href = '{{ url_for('intro') }}' ; "
+        >
+            INTRO
+        </button>
+        <button
+            class="blue"
+            type="button"
+            onclick="window.location.href = '{{ url_for('game_one') }}' ; "
+        >
+            GAME ONE
+        </button>
+        <button
+            class="blue"
+            type="button"
+            onclick="window.location.href = '{{ url_for('game_two') }}' ; "
+        >
+            GAME TWO
+        </button>
+        <button
+            class="blue"
+            type="button"
+            onclick="window.location.href = '{{ url_for('game_three') }}' ; "
+        >
+            GAME THREE
+        </button>
+        <button
+            class="blue"
+            type="button"
+            onclick="window.location.href = '{{ url_for('match_point') }}' ; "
+        >
+            MATCH POINT
+        </button>
+
+        <button
+            class="blue"
+            type="button"
+            style="margin-top: 2vh"
+            onclick="window.location.href = '{{ url_for('stop') }}' ; "
+        >
+            STOP
+        </button>
+
+        <button
+            class="blue"
+            type="button"
+            style="margin-top: 0.5vh"
+            onclick="window.location.href = '{{ url_for('toggle_ads') }}' ; "
+        >
+            TOGGLE ADS
+        </button>
+    </div>
+    <style>
+        .blue {
+            width: auto;
+            height: auto;
+            font:
+                1.8em/1.25em Arial,
+                Helvetica,
+                sans-serif;
+            text-shadow: 1px 2px 2px black;
+            color: red;
+            display: block;
+        }
+    </style>
+</html>

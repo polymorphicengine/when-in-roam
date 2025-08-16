@@ -3,7 +3,7 @@ import library.score as score
 import config
 
 # setup sound
-pygame.mixer.init(buffer=4096, devicename='Built-in Audio Stereo')
+pygame.mixer.init(buffer=4096)
 
 sounds_dir = config.sounds_dir
 
@@ -22,8 +22,16 @@ def stop_background():
 def play_content(path):
     play_seq(pygame.mixer.Sound(path))
 
+# char should be A, B or C
+def play_ad(char, team):
+    play_seq(pygame.mixer.Sound(sounds_dir + f'game/5_ADVERT/{team}_ADVERT_{char}5.wav'))
+
 def play_intro():
     play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/INTRO.wav'))
+
+def play_intro_background():
+    pygame.mixer.music.load(sounds_dir + 'commentator/INTRO.wav')
+    pygame.mixer.music.play(loops=-1)
 
 ####################################################
 ################### SOUND EFFECTS ##################

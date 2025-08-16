@@ -3,17 +3,17 @@ import subprocess
 import library.langdetect as langdetect
 import config
 
-piper = "/home/adoaptive/Desktop/roam/piper/piper"
+piper = config.piper_dir + "piper/piper"
 
-models_english = ["/home/adoaptive/Desktop/roam/models/en/en_US-john-medium.onnx"
-                 ,"/home/adoaptive/Desktop/roam/models/en/en_GB-alan-medium.onnx"
-                 ,"/home/adoaptive/Desktop/roam/models/en/en_GB-alba-medium.onnx"
-                 ,"/home/adoaptive/Desktop/roam/models/en/en_US-amy-medium.onnx"]
-models_hungarian = ["/home/adoaptive/Desktop/roam/models/hu/hu_HU-anna-medium.onnx"
-                   ,"/home/adoaptive/Desktop/roam/models/hu/hu_HU-berta-medium.onnx"
-                   ,"/home/adoaptive/Desktop/roam/models/hu/hu_HU-imre-medium.onnx"]
-models_german = ["/home/adoaptive/Desktop/roam/models/de/de_DE-ramona-low.onnx"
-                ,"/home/adoaptive/Desktop/roam/models/de/de_DE-thorsten-medium.onnx"]
+models_english = [config.piper_dir + "/models/en/en_US-john-medium.onnx"
+                 ,config.piper_dir + "/models/en/en_GB-alan-medium.onnx"
+                 ,config.piper_dir + "/models/en/en_GB-alba-medium.onnx"
+                 ,config.piper_dir + "/models/en/en_US-amy-medium.onnx"]
+models_hungarian = [config.piper_dir + "/models/hu/hu_HU-anna-medium.onnx"
+                   ,config.piper_dir + "/models/hu/hu_HU-berta-medium.onnx"
+                   ,config.piper_dir + "/models/hu/hu_HU-imre-medium.onnx"]
+models_german = [config.piper_dir + "/models/de/de_DE-ramona-low.onnx"
+                ,config.piper_dir + "/models/de/de_DE-thorsten-medium.onnx"]
 
 def tts(text, team, num):
 

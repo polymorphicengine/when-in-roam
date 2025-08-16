@@ -2,7 +2,8 @@ import library.nfc as nfc
 import config
 import library.score as score
 import library.sound as sound
-import library.led as led
+import library.ads as ads
+# import library.led as led
 
 def wait_for_scan():
   nfc.scan_and_play_once(on_scan)
@@ -15,9 +16,9 @@ def wait_for_start():
 
 # given a tag id, select what should be played
 def on_scan(team, player, num, score_enabled = True):
-    
-    led.turn_off_red_light()
-    led.turn_on_green_light()
+
+    # led.turn_off_red_light()
+    # led.turn_on_green_light()
 
     content_file = decode_tag(team, player, num)
     points = number_score(num)
@@ -28,33 +29,43 @@ def on_scan(team, player, num, score_enabled = True):
 
     # 1. scan sound effect
     sound.scan_tag_sound()
-    
+
     # 1.5 if a secret is reveald play the special fx before
     if is_secret:
         sound.before_secret_sound()
-    
+
     # 2. content sound
     sound.play_content(content_file)
-    
+
     # 2.5 if a secret is reveald play the special fx after
     if is_secret:
         sound.after_secret_sound()
 
+    madnum = None
+
     # 3. + 4. points message and soundeffect
     if team == 'Y':
         score.add_points_blue(points)
+        madnum = ads.check_ad_blue()
         sound.points_sound_blue(points)
 
     if team == 'B':
         score.add_points_yellow(points)
+        madnum = ads.check_ad_yellow()
         sound.points_sound_yellow(points)
+
 
     # 5. final score after round
     if score_enabled:
         sound.score_sound()
-    
-    led.turn_off_green_light()
-    led.turn_on_red_light()
+
+    # 6. maybe pla ads
+
+    if madnum != None:
+        sound.play_ad(*madnum)
+
+    # led.turn_off_green_light()
+    # led.turn_on_red_light()
 
     # print(f"Tag: {team}_{player}_{num}")
 

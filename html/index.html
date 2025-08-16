@@ -1,0 +1,22 @@
+<html>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Secret Storage</title>
+
+
+    <h1><span>Which Team are you in?</span></h1>
+    <div>
+        <button type="button" onclick="window.location.href = '{{ url_for('blue_team') }}' ; " >BLUE TEAM</button>
+        <button type="button" onclick="window.location.href = '{{ url_for('yellow_team') }}' ; " >YELLOW TEAM</button>
+    </div>
+    <style>
+ html {
+    background-image: url("./static/background.jpg");
+    background-position: center;
+    background-size: 100vw 100vh;
+      }
+</style>
+
+
+</html>
