@@ -24,7 +24,7 @@ def play_content(path):
 
 # char should be A, B or C
 def play_ad(char, team):
-    play_seq(pygame.mixer.Sound(sounds_dir + f'game/5_ADVERT/{team}_ADVERT_{char}5.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + f'ads/{team}_ADVERT_{char}5.wav'))
 
 def play_intro():
     play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/INTRO.wav'))
