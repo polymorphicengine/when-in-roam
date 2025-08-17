@@ -1,0 +1,39 @@
+<html>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WHEN IN ROAM</title>
+
+    <button
+        class="button"
+        type="button"
+        onclick="window.location.href = '{{ url_for('scan') }}';"
+    >
+        SCAN!
+    </button>
+    <form method="POST">
+        <p>team: <input type="text" name="team" value="{{ last_team }}" /></p>
+        <p>
+            player:
+            <input type="text" name="player" value="{{ last_player }}" />
+        </p>
+        <p>
+            number:
+            <input type="text" name="number" value="{{ last_number }}" />
+        </p>
+        <p><input class="button" type="submit" value="WRITE!" /></p>
+    </form>
+    <div>{{ output }}</div>
+    <style>
+        .button {
+            width: auto;
+            height: auto;
+            font:
+                1.8em/1.25em Arial,
+                Helvetica,
+                sans-serif;
+            text-shadow: 1px 2px 2px black;
+            color: red;
+            display: block;
+        }
+    </style>
+</html>
