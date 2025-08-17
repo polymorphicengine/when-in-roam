@@ -74,7 +74,10 @@ def last_game():
         player.wait_for_scan()
 
 def outro():
-    return
+    if score.shiners_won():
+        sound.play_outro_shiners()
+    else:
+        sound.play_outro_surfers()
 
 def shutdown():
     nfc.close_nfc()
@@ -88,6 +91,7 @@ def performance():
         half_time_show()
         third_game()
         last_game()
+        outro()
         shutdown()
     except:
         shutdown()

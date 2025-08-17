@@ -21,6 +21,12 @@ def third_game_condition():
 def last_game_condition():
     return max(blue_score, yellow_score) < config.last_game_score_condition
 
+def shiners_won():
+    if yellow_score >= config.last_game_score_condition:
+         return True
+    else:
+         return False
+
 def even_second_game():
     global blue_score, yellow_score
     blue_score = config.third_game_score_condition

@@ -33,6 +33,20 @@ def play_intro_background():
     pygame.mixer.music.load(sounds_dir + 'commentator/INTRO.wav')
     pygame.mixer.music.play(loops=-1)
 
+def play_outro_shiners():
+    play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/OUTRO_SHINERS.wav'))
+
+def play_outro_surfers():
+    play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/OUTRO_SURFERS.wav'))
+
+def play_outro_shiners_background():
+    pygame.mixer.music.load(sounds_dir + 'commentator/OUTRO_SHINERS.wav')
+    pygame.mixer.music.play(loops=-1)
+
+def play_outro_surfers_background():
+    pygame.mixer.music.load(sounds_dir + 'commentator/OUTRO_SURFERS.wav')
+    pygame.mixer.music.play(loops=-1)
+
 ####################################################
 ################### SOUND EFFECTS ##################
 ####################################################
@@ -41,11 +55,10 @@ def scan_tag_sound():
     play_seq(pygame.mixer.Sound(sounds_dir + 'fx/scan/scan_chip.wav'))
 
 def before_secret_sound():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'fx/AFTER_SECRET.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/SECRET_REVEALED.wav'))
 
 def after_secret_sound():
-    return
-    # play_seq(pygame.mixer.Sound(sounds_dir + 'fx/AFTER_SECRET.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'fx/AFTER_SECRET.wav'))
 
 def undo_secret_sound():
     play_seq(pygame.mixer.Sound(sounds_dir + 'fx/UNDO_SECRET.wav'))
@@ -151,13 +164,16 @@ def points_message_yellow(points):
 ################################################
 
 def start_game_one():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_1.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_INTROS/GAME_ONE_INTRO.wav'))
 
 def start_game_two():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_2.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_INTROS/GAME_TWO_INTRO.wav'))
 
 def start_game_three():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_3.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_INTROS/GAME_THREE_INTRO.wav'))
+
+def start_match_point():
+    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_INTROS/MATCH_POINT_INTRO.wav'))
 
 def score_sound():
  if score.blue_score >= score.yellow_score:

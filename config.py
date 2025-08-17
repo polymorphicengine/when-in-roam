@@ -1,5 +1,8 @@
 # game configuration
-max_secrets = 8
+max_secrets = 9
+
+# set period of announcing that team is ready to start (in minutes)
+ready_to_start_period = 3
 
 first_game_repetitions = 3
 
@@ -21,7 +24,7 @@ ads_repetition = 5
 # turn ads on / off
 play_ads = True
 
-start_card_id = bytearray(b')N@\x05')
+start_card_id = bytearray(b'\x04X\xfb:@Y\x80')
 
 piper_dir = "/home/martin/git/when-in-roam/piper/"
 
