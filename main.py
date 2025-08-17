@@ -4,10 +4,11 @@ import library.sound as sound
 import library.secret as secret
 import library.score as score
 import library.led as led
+import library.restore as restore
 import config
 
+
 def beginning():
-    led.turn_off_red_light()
     sound.beginning_background()
     server.startWebsite()
     while True:
@@ -30,37 +31,65 @@ def first_game():
 
 def second_game():
     sound.start_game_two()
+    
     while score.second_game_condition():
        sound.second_game_background()
        led.turn_on_red_light()
        player.wait_for_scan()
 
+
 def third_game():
     sound.start_game_three()
+    
     while score.third_game_condition():
        sound.third_game_background()
        led.turn_on_red_light()
        player.wait_for_scan()
 
+
 def last_game():
+    sound.start_match_point()
+
     while score.last_game_condition():
        sound.last_point_background()
        led.turn_on_red_light()
        player.wait_for_scan()
 
+
+def outro():
+    if score.shiners_won():
+        sound.play_outro_shiners()
+    else:
+        sound.play_outro_surfers()
+
 def performance():
-    # beginning()
-    # stretching()
-    first_game()
-    second_game()
-    third_game()
-    last_game()
+
+    beginning() # 0
+    restore.increaseStage()
+    
+    stretching() # 1
+    restore.increaseStage()
+    
+    first_game() # 2
+    restore.increaseStage()
+    
+    second_game() # 3
+    restore.increaseStage()
+    
+    third_game() # 4
+    restore.increaseStage()
+    
+    last_game() # 5
+    restore.increaseStage()
+
+    outro()
 
 if __name__ == '__main__':
     try:
       performance()
     finally:
       led.turn_off_red_light() 
-      led.turn_off_green_light() 
-    # first_game()
+      led.turn_off_green_light()
+      restore.writeScore()
+
     # server.startDebug()

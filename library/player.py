@@ -102,6 +102,6 @@ def number_score(num):
         case 5:
             return 0
         case 6:
-            return -2
+            return -1
         case _:
             print("Error in number_score")

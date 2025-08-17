@@ -11,7 +11,7 @@ secret_count_yellow = 0
 blue_team_is_ready = False
 yellow_team_is_ready = False
 
-wait_time = 1
+wait_time = config.ready_to_start_period
 
 def has_collected_all_blue():
     while not blue_team_is_ready:

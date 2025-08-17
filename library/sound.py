@@ -3,7 +3,7 @@ import library.score as score
 import config
 
 # setup sound
-pygame.mixer.init(buffer=4096, devicename='Built-in Audio Stereo')
+pygame.mixer.init(buffer=4096)
 
 sounds_dir = config.sounds_dir
 
@@ -25,6 +25,12 @@ def play_content(path):
 def play_intro():
     play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/INTRO.wav'))
 
+def play_outro_shiners():
+    play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/OUTRO_SHINERS.wav'))
+
+def play_outro_surfers():
+    play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/OUTRO_SURFERS.wav'))
+
 ####################################################
 ################### SOUND EFFECTS ##################
 ####################################################
@@ -33,11 +39,10 @@ def scan_tag_sound():
     play_seq(pygame.mixer.Sound(sounds_dir + 'fx/scan/scan_chip.wav'))
 
 def before_secret_sound():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'fx/AFTER_SECRET.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/SECRET_REVEALED.wav'))
 
 def after_secret_sound():
-    return
-    # play_seq(pygame.mixer.Sound(sounds_dir + 'fx/AFTER_SECRET.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'fx/AFTER_SECRET.mp3'))
 
 def undo_secret_sound():
     play_seq(pygame.mixer.Sound(sounds_dir + 'fx/UNDO_SECRET.wav'))
@@ -98,43 +103,43 @@ def collect_secret_fx():
 # played when blue scored points
 def points_sound_blue(points):
     points_message_blue(points)
-    # points_fx(points)
+    points_fx(points)
 
 # played when yellow scored points
 def points_sound_yellow(points):
     points_message_yellow(points)
-    # points_fx(points)
+    points_fx(points)
 
 def points_fx(points):
     play_seq(pygame.mixer.Sound(sounds_dir + f"fx/points/{points}_points.wav"))
 
 def points_message_blue(points):
     match points:
-        case -2:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_B_6.wav'))
+        case -1:
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_B_6.wav'))
         case 0:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_B_5.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_B_5.wav'))
         case 1:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_B_4.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_B_4.wav'))
         case 2:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_B_3.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_B_3.wav'))
         case 3:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_B_1-2.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_B_1-2.wav'))
         case _:
             print("Error in points_message_blue")
 
 def points_message_yellow(points):
     match points:
         case -2:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_Y_6.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_Y_6.wav'))
         case 0:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_Y_5.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_Y_5.wav'))
         case 1:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_Y_4.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_Y_4.wav'))
         case 2:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_Y_3.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_Y_3.wav'))
         case 3:
-            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points/TAG_Y_1-2.wav'))
+            play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/points_nofx/TAG_Y_1-2.wav'))
         case _:
             print("Error in points_message_yellow")
 
@@ -143,13 +148,16 @@ def points_message_yellow(points):
 ################################################
 
 def start_game_one():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_1.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_INTROS/GAME_ONE_INTRO.wav'))
 
 def start_game_two():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_2.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_INTROS/GAME_TWO_INTRO.wav'))
 
 def start_game_three():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_3.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_INTROS/GAME_THREE_INTRO.wav'))
+
+def start_match_point():
+    play_seq(pygame.mixer.Sound(sounds_dir + 'system/GAME_INTROS/MATCH_POINT_INTRO.wav'))
 
 def score_sound():
  if score.blue_score >= score.yellow_score:

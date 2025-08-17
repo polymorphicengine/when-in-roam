@@ -5,9 +5,9 @@ import config
 
 piper = "/home/adoaptive/Desktop/roam/piper/piper"
 
-models_english = ["/home/adoaptive/Desktop/roam/models/en/en_US-john-medium.onnx"
-                 ,"/home/adoaptive/Desktop/roam/models/en/en_GB-alan-medium.onnx"
-                 ,"/home/adoaptive/Desktop/roam/models/en/en_GB-alba-medium.onnx"
+models_english = ["/home/adoaptive/Desktop/roam/models/en/en_US-bryce-medium.onnx"
+                 ,"/home/adoaptive/Desktop/roam/models/en/en_US-ryan-high.onnx"
+                 ,"/home/adoaptive/Desktop/roam/models/en/en_US-hfc_female-medium.onnx"
                  ,"/home/adoaptive/Desktop/roam/models/en/en_US-amy-medium.onnx"]
 models_hungarian = ["/home/adoaptive/Desktop/roam/models/hu/hu_HU-anna-medium.onnx"
                    ,"/home/adoaptive/Desktop/roam/models/hu/hu_HU-berta-medium.onnx"
