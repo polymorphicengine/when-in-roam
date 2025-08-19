@@ -4,10 +4,11 @@ import library.player as player
 import library.server as server
 import library.secret as secret
 import library.nfc as nfc
+import library.display as display
 import config
 
-second_game_round = 1
-last_game_round = 1
+second_game_round = 0
+last_game_round = 0
 
 def secret_collection():
     sound.beginning_background()
@@ -37,6 +38,7 @@ def second_game():
 
        if second_game_round > config.second_game_limit:
            score.even_second_game()
+           display.display_even_the_odds()
            break
 
        else:
@@ -62,6 +64,7 @@ def last_game():
 
        if last_game_round > config.last_game_limit:
            score.even_last_game()
+           display.display_even_the_odds()
            break
        else:
             sound.last_point_background()

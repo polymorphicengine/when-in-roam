@@ -8,11 +8,11 @@ import config
 # I2C connection setup
 i2c = busio.I2C(board.SCL, board.SDA)
 
-reset_pin = DigitalInOut(board.D6)
+# reset_pin = DigitalInOut(board.D6)
 # On Raspberry Pi, you must also connect a pin to P32 "H_Request" for hardware
 # wakeup! this means we don't need to do the I2C clock-stretch thing
-req_pin = DigitalInOut(board.D12)
-pn532 = PN532_I2C(i2c, debug=False, reset=reset_pin, req=req_pin)
+# req_pin = DigitalInOut(board.D12)
+pn532 = PN532_I2C(i2c, debug=False)
 
 # Configure PN532 to read NFC tags
 pn532.SAM_configuration()

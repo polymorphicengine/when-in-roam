@@ -3,6 +3,7 @@ import config
 import library.score as score
 import library.sound as sound
 import library.ads as ads
+import library.display as display
 
 def wait_for_scan():
   nfc.scan_and_play_once(on_scan)
@@ -18,7 +19,7 @@ def on_scan(team, player, num, score_enabled = True):
 
     content_file = decode_tag(team, player, num)
     points = number_score(num)
-    is_secret = (num == 1) or (num == 2)
+    is_secret = (num == 1) or (num == 2) or (num == 3)
 
     # stop background
     sound.stop_background()
@@ -26,7 +27,16 @@ def on_scan(team, player, num, score_enabled = True):
     # 1. scan sound effect
     sound.scan_tag_sound()
 
-    # 1.5 if a secret is reveald play the special fx before
+    # 1.25
+    # render who scored and amount to display
+
+    if team == 'Y':
+       display.display_blue_score(points)
+    else:
+       display.display_yellow_score(points)
+
+
+    # 1.5 if a secret is revealed play the special fx before
     if is_secret:
         sound.before_secret_sound()
 

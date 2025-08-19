@@ -30,6 +30,7 @@ piper_dir = "/home/martin/git/when-in-roam/piper/"
 
 # asset directories
 sounds_dir = "/home/martin/git/when-in-roam/sounds/"
+video_dir = "/home/martin/git/when-in-roam/video/"
 html_dir = "/home/martin/git/when-in-roam/html"
 static_dir = "/home/martin/git/when-in-roam/html/static"
 
