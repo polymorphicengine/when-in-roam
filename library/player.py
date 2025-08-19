@@ -24,16 +24,17 @@ def on_scan(team, player, num, score_enabled = True):
     # stop background
     sound.stop_background()
 
+    # render who scored and amount to display
+    if team == 'Y':
+        display.display_blue_score(points)
+    else:
+        display.display_yellow_score(points)
+
     # 1. scan sound effect
     sound.scan_tag_sound()
 
-    # 1.25
-    # render who scored and amount to display
-
-    if team == 'Y':
-       display.display_blue_score(points)
-    else:
-       display.display_yellow_score(points)
+    # stop display of who scored
+    display.stop_scored_display()
 
 
     # 1.5 if a secret is revealed play the special fx before
@@ -71,6 +72,19 @@ def on_scan(team, player, num, score_enabled = True):
         sound.play_ad(*madnum)
 
     # print(f"Tag: {team}_{player}_{num}")
+
+
+# if the odds have been evened in the last game
+# the winner is determined only by which team scores
+
+def wait_for_last_scan():
+  nfc.scan_and_play_once(on_last_scan)
+
+def on_last_scan(team, player, num, score_enabled = True):
+    if team == 'Y':
+        score.make_shiners_win()
+    else:
+        score.make_surfers_win()
 
 
 # there are two teams (Y and B) -> no need to decode

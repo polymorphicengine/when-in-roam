@@ -39,6 +39,8 @@ def second_game():
        if second_game_round > config.second_game_limit:
            score.even_second_game()
            display.display_even_the_odds()
+           sound.wait(2)
+           display.stop_even_the_odds_display()
            break
 
        else:
@@ -65,16 +67,17 @@ def last_game():
        if last_game_round > config.last_game_limit:
            score.even_last_game()
            display.display_even_the_odds()
+           sound.wait(2)
+           display.stop_even_the_odds_display()
            break
        else:
             sound.last_point_background()
             player.wait_for_scan()
 
     # if score has been evened we play a final round to determine the winner
-    # TODO: what if a team then only scores 0 points?
     if score.get_score_blue() == score.get_score_yellow():
         sound.last_point_background()
-        player.wait_for_scan()
+        player.wait_for_last_scan()
 
 def outro():
     if score.shiners_won():

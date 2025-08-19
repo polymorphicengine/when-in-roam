@@ -1,19 +1,18 @@
 import pygame
 import pygame.time
 import pygame.camera
-import pygamevideo as video
 from threading import Thread
 import library.score as score
 import sys
-import config
 
 def display_loop():
     global yellow_scored
     global blue_scored
     global even_the_odds
     global score_amount
+    global vid
 
-    fullscreen = True
+    fullscreen = False
     pygame.init()
     pygame.camera.init()
 
@@ -21,10 +20,6 @@ def display_loop():
         display = pygame.display.set_mode((640,480), pygame.FULLSCREEN)
     else:
         display = pygame.display.set_mode((640,480))
-
-    # pip install pygamevideo
-    # define video file
-    vid = video.Video(config.video_dir + "lain.mp4")
 
     # text to render on webcam feed
     font = pygame.font.SysFont('Arial', 50, bold=True)
@@ -36,7 +31,7 @@ def display_loop():
     # cam.start()
 
     def text_even_the_odds():
-        return font.render("EVENING THE ODDS", False, (0, 0, 0))
+        return font.render("EVENING THE ODDS", False, (255, 0, 0))
 
     def text_blue_score(points):
         return font.render(f'The Surfers Scored {points} points!', False, (0, 0, 255))
@@ -55,46 +50,24 @@ def display_loop():
         display.blit(sc_y, (sc_y.get_width(), height/2))
         display.blit(sc_b, (width - sc_b.get_width()*2, height/2))
 
-    # play the video
-    vid.play()
-
     # display loop
     while True:
 
         display.fill((0,0,0))
 
-        if vid.is_playing:
+        display_score()
 
-            vid.draw_to(display, (0, 0))
+        if yellow_scored:
+            text = text_yellow_score(score_amount)
+            display.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
 
-        else:
-            vid.release()
-            # img = cam.get_image()
-            # display.blit(img,(0,0))
+        if blue_scored:
+            text = text_blue_score(score_amount)
+            display.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
 
-            display_score()
-
-            if yellow_scored:
-                text = text_yellow_score(score_amount)
-                display.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
-                increase_timer()
-                if timer > 3:
-                        yellow_scored = False
-                        reset_timer()
-
-            if blue_scored:
-                text = text_blue_score(score_amount)
-                display.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
-                if timer > 3:
-                        blue_scored = False
-                        reset_timer()
-
-            if even_the_odds:
-                display.blit(text_even_the_odds(), (width/2,height/2))
-                increase_timer()
-                if timer > 3:
-                        even_the_odds = False
-                        reset_timer()
+        if even_the_odds:
+            text = text_even_the_odds()
+            display.blit(text, (width/2 - text.get_width()/2,height/3 - text.get_height()/2))
 
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -108,30 +81,13 @@ def display_loop_thread():
     t.daemon = True
     t.start()
 
-# helper functions for timing the display of which team scored
+# helper functions to toggle the display of text
+# from other threads and conditions
 
 yellow_scored = False
 blue_scored = False
 even_the_odds = False
 score_amount = 1
-
-timer_start = 0
-timer = 0
-
-def start_timer():
-   global timer_start
-   timer_start = pygame.time.get_ticks()
-
-def increase_timer():
-    global timer
-    global timer_start
-    timer = (pygame.time.get_ticks() - timer_start) / 1000
-
-def reset_timer():
-    global timer
-    global timer_start
-    timer = 0
-    timer_start = 0
 
 def display_yellow_score(points):
     global yellow_scored
@@ -140,17 +96,24 @@ def display_yellow_score(points):
     score_amount = points
     # set scored to True
     yellow_scored = True
-    # start the timer
-    start_timer()
 
 def display_blue_score(points):
     global blue_scored
     global score_amount
     blue_scored = True
     score_amount = points
-    start_timer()
+
+def stop_scored_display():
+    global blue_scored
+    global yellow_scored
+    blue_scored = False
+    yellow_scored = False
+
+def stop_even_the_odds_display():
+    global even_the_odds
+    even_the_odds = False
 
 def display_even_the_odds():
     global even_the_odds
     even_the_odds = True
-    start_timer()
+    # start_timer()

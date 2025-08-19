@@ -42,3 +42,11 @@ def get_score_blue():
 
 def get_score_yellow():
     return yellow_score
+
+def make_shiners_win():
+    global yellow_score
+    yellow_score = config.last_game_score_condition
+
+def make_surfers_win():
+    global blue_score
+    blue_score = config.last_game_score_condition
