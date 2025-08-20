@@ -1,67 +1,87 @@
 <html>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Secure Secret Storage</title>
     <audio src="./static/backgroundMusic.wav" autoplay loop></audio>
 
-    <div id="secret"> You collected {{ secrets }} of 8 secrets. </div>
+    <div id="secret">
+        You collected {{ secrets }} of {{max_secrets}} secrets.
+    </div>
     <form action="/submit_blue" method="POST">
-        <input type="text" name="user_input" autocomplete="off" placeholder="Tell us a secret...">
+        <input
+            type="text"
+            name="user_input"
+            autocomplete="off"
+            placeholder="Tell us a secret..."
+        />
         <button type="submit">Submit</button>
-        <button type="button" onclick="window.location.href = '{{ url_for('undo_blue') }}' ; "> Undo </button>
+        <button
+            type="button"
+            onclick="window.location.href = '{{ url_for('undo_blue') }}' ; "
+        >
+            Undo
+        </button>
     </form>
     <style>
- html {
-    background-image: url("./static/backgroundB.jpg");
-    background-position: center;
-    background-size: 100vw 100vh;
-      }
+        html {
+            background-image: url("./static/backgroundB.jpg");
+            background-position: center;
+            background-size: 100vw 100vh;
+        }
 
-form {
-    margin: 0 auto;
-    width: 0%;
-    height: 30%;
-    line-height: 700px;
-     }
-input[type="text"] {
-    padding: 12px;
-    position: absolute;
-    top: 46.3vh;
-    left: 13.8vw;
-    width: 72.3vw;
-    height: 11.5vh;
-    font: 3em/1.25em Arial, Helvetica, sans-serif;
-     }
-button[type="submit"]{
-    position: absolute;
-    top: 59.5vh;
-    left: 37.4vw;
-    width: 12vw;
-    height: 4vh;
-    font: 1.8em/1.25em Arial, Helvetica, sans-serif;
-    text-shadow: 1px 2px 2px black; 
-    }
-button[type="button"]{
-    position: absolute;
-    top: 59.5vh;
-    left: 50.5vw;
-    width: 12vw;
-    height: 4vh;
-    font: 1.8em/1.25em Arial, Helvetica, sans-serif;
-    text-shadow: 1px 2px 2px black; 
-    }
-#secret{
-    position: absolute;
-    top: 69.5vh;
-    left: 30.5vw;
-    font: 5vh Arial, Helvetica, sans-serif;
-    font-weight: 800;
-    color: white;
-    text-shadow: #000 0px 0px 3px;
-}
-
-</style>
-
-
+        form {
+            margin: 0 auto;
+            width: 0%;
+            height: 30%;
+            line-height: 700px;
+        }
+        input[type="text"] {
+            padding: 12px;
+            position: absolute;
+            top: 46.3vh;
+            left: 13.8vw;
+            width: 72.3vw;
+            height: 11.5vh;
+            font:
+                3em/1.25em Arial,
+                Helvetica,
+                sans-serif;
+        }
+        button[type="submit"] {
+            position: absolute;
+            top: 59.5vh;
+            left: 37.4vw;
+            width: 12vw;
+            height: 4vh;
+            font:
+                1.8em/1.25em Arial,
+                Helvetica,
+                sans-serif;
+            text-shadow: 1px 2px 2px black;
+        }
+        button[type="button"] {
+            position: absolute;
+            top: 59.5vh;
+            left: 50.5vw;
+            width: 12vw;
+            height: 4vh;
+            font:
+                1.8em/1.25em Arial,
+                Helvetica,
+                sans-serif;
+            text-shadow: 1px 2px 2px black;
+        }
+        #secret {
+            position: absolute;
+            top: 69.5vh;
+            left: 30.5vw;
+            font:
+                5vh Arial,
+                Helvetica,
+                sans-serif;
+            font-weight: 800;
+            color: white;
+            text-shadow: #000 0px 0px 3px;
+        }
+    </style>
 </html>

@@ -13,11 +13,11 @@ def home():
 
 @app.route('/blue_team')
 def blue_team():
-    return render_template('blue_team.html', secrets=secret.secret_count_blue)
+    return render_template('blue_team.html', secrets=secret.secret_count_blue, max_secrets = config.max_secrets)
 
 @app.route('/yellow_team')
 def yellow_team():
-    return render_template('yellow_team.html', secrets=secret.secret_count_yellow)
+    return render_template('yellow_team.html', secrets=secret.secret_count_yellow, max_secrets = config.max_secrets)
 
 @app.route('/submit_blue', methods=['POST'])
 def submit_blue():
