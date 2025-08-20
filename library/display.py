@@ -4,22 +4,27 @@ import pygame.camera
 from threading import Thread
 import library.score as score
 import sys
+import config
 
 def display_loop():
     global yellow_scored
     global blue_scored
     global even_the_odds
     global score_amount
+    global half_time
     global vid
 
-    fullscreen = False
+    fullscreen = True
     pygame.init()
     pygame.camera.init()
 
     if fullscreen:
-        display = pygame.display.set_mode((640,480), pygame.FULLSCREEN)
+        resolution = (pygame.display.Info().current_w, pygame.display.Info().current_h)
+        display = pygame.display.set_mode(resolution, pygame.NOFRAME)
     else:
         display = pygame.display.set_mode((640,480))
+
+    halftime_image = pygame.image.load(config.video_dir + 'HALFTIME_BACKGROUND.jpg')
 
     # text to render on webcam feed
     font = pygame.font.SysFont('Arial', 50, bold=True)
@@ -69,6 +74,9 @@ def display_loop():
             text = text_even_the_odds()
             display.blit(text, (width/2 - text.get_width()/2,height/3 - text.get_height()/2))
 
+        if half_time:
+            display.blit(halftime_image, (0,0))
+
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -76,7 +84,7 @@ def display_loop():
 
         pygame.display.update()
 
-def display_loop_thread():
+def start_display():
     t = Thread(target=display_loop)
     t.daemon = True
     t.start()
@@ -87,6 +95,7 @@ def display_loop_thread():
 yellow_scored = False
 blue_scored = False
 even_the_odds = False
+half_time = False
 score_amount = 1
 
 def display_yellow_score(points):
@@ -116,4 +125,11 @@ def stop_even_the_odds_display():
 def display_even_the_odds():
     global even_the_odds
     even_the_odds = True
-    # start_timer()
+
+def display_halftime():
+    global half_time
+    half_time = True
+
+def stop_halftime_display():
+    global half_time
+    half_time = False

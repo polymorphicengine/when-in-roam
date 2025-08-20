@@ -91,6 +91,9 @@ def last_point_background():
     pygame.mixer.music.load(sounds_dir + 'background/6_Last_Point.wav')
     pygame.mixer.music.play(loops=-1)
 
+def half_time_music():
+    play_seq(pygame.mixer.Sound(sounds_dir + 'halftime/HALFTIME_MUSIC.wav'))
+
 ###########################################################
 ################# SECRET COLLECTION SOUNDS ################
 ###########################################################

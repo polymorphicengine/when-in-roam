@@ -5,6 +5,7 @@ import library.server as server
 import library.secret as secret
 import library.nfc as nfc
 import library.display as display
+import library.video as video
 import config
 
 second_game_round = 0
@@ -20,9 +21,15 @@ def secret_collection():
 
 def stretching():
     sound.stretching_background()
+
+    # wait for the start flag
     player.wait_for_start()
     sound.stop_background()
-    sound.play_intro()
+
+    # play intro video
+    video.play_video()
+    # after video finishes, start display
+    display.start_display()
 
 def first_game():
     sound.start_game_one()
@@ -48,7 +55,9 @@ def second_game():
            player.wait_for_scan()
 
 def half_time_show():
-    return
+    display.display_halftime()
+    sound.half_time_music()
+    display.stop_halftime_display()
 
 def third_game():
     sound.start_game_three()
