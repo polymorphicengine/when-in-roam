@@ -55,9 +55,14 @@ def second_game():
            player.wait_for_scan()
 
 def half_time_show():
+
+    # halftime show sound and image
     display.display_halftime()
     sound.half_time_music()
     display.stop_halftime_display()
+
+    # wait for the start card again
+    player.wait_for_start()
 
 def third_game():
     sound.start_game_three()
@@ -90,9 +95,13 @@ def last_game():
 
 def outro():
     if score.shiners_won():
+        display.display_shiners()
         sound.play_outro_shiners()
+        display.stop_shiners_display()
     else:
+        display.display_surfers()
         sound.play_outro_surfers()
+        display.stop_surfers_display()
 
 def shutdown():
     nfc.close_nfc()

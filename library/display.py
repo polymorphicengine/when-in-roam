@@ -38,6 +38,12 @@ def display_loop():
     def text_even_the_odds():
         return font.render("EVENING THE ODDS", False, (255, 0, 0))
 
+    def text_shiners_won():
+        return font.render("THE SHINERS WON THE ROAMING TOURNAMENT", False, (0, 255, 0))
+
+    def text_surfers_won():
+        return font.render("THE SURFERS WON THE ROAMING TOURNAMENT", False, (0, 0, 255))
+
     def text_blue_score(points):
         return font.render(f'The Surfers Scored {points} points!', False, (0, 0, 255))
 
@@ -77,6 +83,14 @@ def display_loop():
         if half_time:
             display.blit(halftime_image, (0,0))
 
+        if shiners_won:
+            text = text_shiners_won()
+            display.blit(text, (width/2 - text.get_width()/2, height/3 - text.get_height()/2))
+
+        if surfers_won:
+            text = text_surfers_won()
+            display.blit(text, (width/2 - text.get_width()/2, height/3 - text.get_height()/2))
+
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -96,6 +110,8 @@ yellow_scored = False
 blue_scored = False
 even_the_odds = False
 half_time = False
+shiners_won = False
+surfers_won = False
 score_amount = 1
 
 def display_yellow_score(points):
@@ -133,3 +149,19 @@ def display_halftime():
 def stop_halftime_display():
     global half_time
     half_time = False
+
+def display_shiners():
+    global shiners_won
+    shiners_won = True
+
+def stop_shiners_display():
+    global shiners_won
+    shiners_won = False
+
+def display_surfers():
+    global surfers_won
+    surfers_won = True
+
+def stop_surfers_display():
+    global surfers_won
+    surfers_won = False

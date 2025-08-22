@@ -26,9 +26,6 @@ def play_content(path):
 def play_ad(char, team):
     play_seq(pygame.mixer.Sound(sounds_dir + f'ads/{team}_ADVERT_{char}5.wav'))
 
-def play_intro():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/INTRO.wav'))
-
 def play_intro_background():
     pygame.mixer.music.load(sounds_dir + 'commentator/INTRO.wav')
     pygame.mixer.music.play(loops=-1)
@@ -92,17 +89,17 @@ def last_point_background():
     pygame.mixer.music.play(loops=-1)
 
 def half_time_music():
-    play_seq(pygame.mixer.Sound(sounds_dir + 'halftime/HALFTIME_MUSIC.wav'))
+    play_seq(pygame.mixer.Sound(sounds_dir + 'halftime/HALFTIME.wav'))
 
 ###########################################################
 ################# SECRET COLLECTION SOUNDS ################
 ###########################################################
 
 def collected_all_sound_blue():
-    pygame.mixer.Sound(sounds_dir + "commentator/secret/TAG_B_s9.wav").play()
+    pygame.mixer.Sound(sounds_dir + "commentator/secret/TAG_B_s10.wav").play()
 
 def collected_all_sound_yellow():
-    pygame.mixer.Sound(sounds_dir + "commentator/secret/TAG_Y_s9.wav").play()
+    pygame.mixer.Sound(sounds_dir + "commentator/secret/TAG_Y_s10.wav").play()
 
 def collect_secret_sound_blue(num):
     # collect_secret_fx()

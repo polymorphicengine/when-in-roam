@@ -26,8 +26,10 @@ def on_scan(team, player, num, score_enabled = True):
 
     # render who scored and amount to display
     if team == 'Y':
+        score.add_points_blue(points)
         display.display_blue_score(points)
     else:
+        score.add_points_yellow(points)
         display.display_yellow_score(points)
 
     # 1. scan sound effect
@@ -52,12 +54,10 @@ def on_scan(team, player, num, score_enabled = True):
 
     # 3. + 4. points message and soundeffect
     if team == 'Y':
-        score.add_points_blue(points)
         madnum = ads.check_ad_blue()
         sound.points_sound_blue(points)
 
     if team == 'B':
-        score.add_points_yellow(points)
         madnum = ads.check_ad_yellow()
         sound.points_sound_yellow(points)
 

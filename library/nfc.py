@@ -33,7 +33,7 @@ def scan():
 
     data = pn532.mifare_classic_read_block(4)
 
-    if data is not None:
+    if data is not None and check_valid(data):
         return (chr(data[0]),chr(data[1]),int(data[2]))
     else:
         scan()
@@ -95,3 +95,12 @@ def write_once(team, player, num):
 def close_nfc():
     i2c.unlock()
     i2c.deinit()
+
+def check_valid(data):
+    team = chr(data[0])
+    player = chr(data[1])
+    number = data[2]
+    t = team in ['B', 'Y']
+    p = player in ['A', 'B', 'C']
+    n = number <= 6 and number >= 1
+    return (t and p and n)
