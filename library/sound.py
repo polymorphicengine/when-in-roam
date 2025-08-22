@@ -22,9 +22,8 @@ def stop_background():
 def play_content(path):
     play_seq(pygame.mixer.Sound(path))
 
-# char should be A, B or C
-def play_ad(char, team):
-    play_seq(pygame.mixer.Sound(sounds_dir + f'ads/{team}_ADVERT_{char}5.wav'))
+def play_ad(number):
+    play_seq(pygame.mixer.Sound(sounds_dir + f'ads/AD_{number}.wav'))
 
 def play_intro_background():
     pygame.mixer.music.load(sounds_dir + 'commentator/INTRO.wav')
@@ -90,6 +89,11 @@ def last_point_background():
 
 def half_time_music():
     play_seq(pygame.mixer.Sound(sounds_dir + 'halftime/HALFTIME.wav'))
+
+def half_time_music_background():
+    pygame.mixer.music.load(sounds_dir + 'halftime/HALFTIME.wav')
+    pygame.mixer.music.play(loops=-1)
+
 
 ###########################################################
 ################# SECRET COLLECTION SOUNDS ################

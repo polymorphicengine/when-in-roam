@@ -1,30 +1,31 @@
 # game configuration
-max_secrets = 9
+max_secrets = 2
 
 # set period of announcing that team is ready to start (in minutes)
 ready_to_start_period = 3
 
 first_game_repetitions = 3
 
-second_game_score_condition = 8
+second_game_score_condition = 9
 second_game_limit = 6
 
-third_game_score_condition = 13
+third_game_score_condition = 14
 
 # amount of points needed for win
 last_game_score_condition = 16
 last_game_limit = 2
 
 # when true, tags can be triggered multiple times
-rescan_possible = False
+rescan_possible = True
 
 # after how many points to trigger ads
-ads_repetition = 5
+ads_repetition = 6
 
 # turn ads on / off
 play_ads = True
 
-start_card_id = bytearray(b'\x04X\xfb:@Y\x80')
+start_card_id = bytearray(b'\xaaSn\x05')
+              # actual flag: bytearray(b'\x04X\xfb:@Y\x80')
 
 piper_dir = "/home/martin/git/when-in-roam/piper/"
 

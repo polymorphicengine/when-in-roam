@@ -61,8 +61,13 @@ def half_time_show():
     sound.half_time_music()
     display.stop_halftime_display()
 
+    sound.play_ad(2)
+
+    sound.stretching_background()
+
     # wait for the start card again
     player.wait_for_start()
+    sound.stop_background()
 
 def third_game():
     sound.start_game_three()
@@ -111,9 +116,11 @@ def performance():
         secret_collection()
         stretching()
         first_game()
+        sound.play_ad(1)
         second_game()
         half_time_show()
         third_game()
+        sound.play_ad(3)
         last_game()
         outro()
         shutdown()

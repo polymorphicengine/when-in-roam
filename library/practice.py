@@ -41,6 +41,11 @@ def game_two():
     sound.second_game_background()
     return redirect('/')
 
+@app.route('/halftime')
+def halftime():
+    sound.half_time_music_background()
+    return redirect('/')
+
 @app.route('/game_three')
 def game_three():
     sound.third_game_background()
@@ -49,6 +54,16 @@ def game_three():
 @app.route('/match_point')
 def match_point():
     sound.last_point_background()
+    return redirect('/')
+
+@app.route('/outro_shiners')
+def outro_shiners():
+    sound.play_outro_shiners_background()
+    return redirect('/')
+
+@app.route('/outro_surfers')
+def outro_surfers():
+    sound.play_outro_surfers_background()
     return redirect('/')
 
 def start_practice():

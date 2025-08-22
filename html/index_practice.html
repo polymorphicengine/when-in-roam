@@ -36,6 +36,13 @@
         <button
             class="blue"
             type="button"
+            onclick="window.location.href = '{{ url_for('halftime') }}' ; "
+        >
+            HALFTIME
+        </button>
+        <button
+            class="blue"
+            type="button"
             onclick="window.location.href = '{{ url_for('game_three') }}' ; "
         >
             GAME THREE
@@ -46,6 +53,20 @@
             onclick="window.location.href = '{{ url_for('match_point') }}' ; "
         >
             MATCH POINT
+        </button>
+        <button
+            class="blue"
+            type="button"
+            onclick="window.location.href = '{{ url_for('outro_shiners') }}' ; "
+        >
+            OUTRO SHINERS
+        </button>
+        <button
+            class="blue"
+            type="button"
+            onclick="window.location.href = '{{ url_for('outro_surfers') }}' ; "
+        >
+            OUTRO SURFERS
         </button>
 
         <button

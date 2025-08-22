@@ -3,5 +3,6 @@ import library.game as game
 if __name__ == '__main__':
     try:
         game.performance()
-    except:
+    except Exception as e:
+        print(e)
         game.shutdown()

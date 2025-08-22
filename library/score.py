@@ -29,8 +29,8 @@ def shiners_won():
 
 def even_second_game():
     global blue_score, yellow_score
-    blue_score = config.third_game_score_condition
-    yellow_score = config.third_game_score_condition
+    blue_score = config.second_game_score_condition
+    yellow_score = config.second_game_score_condition
 
 def even_last_game():
     global blue_score, yellow_score

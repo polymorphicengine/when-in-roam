@@ -27,7 +27,7 @@ def display_loop():
     halftime_image = pygame.image.load(config.video_dir + 'HALFTIME_BACKGROUND.jpg')
 
     # text to render on webcam feed
-    font = pygame.font.SysFont('Arial', 50, bold=True)
+    font = pygame.font.SysFont('Arial', 250, bold=True)
 
     width, height = pygame.display.get_surface().get_size()
 

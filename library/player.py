@@ -2,7 +2,6 @@ import library.nfc as nfc
 import config
 import library.score as score
 import library.sound as sound
-import library.ads as ads
 import library.display as display
 
 def wait_for_scan():
@@ -50,26 +49,17 @@ def on_scan(team, player, num, score_enabled = True):
     if is_secret:
         sound.after_secret_sound()
 
-    madnum = None
-
     # 3. + 4. points message and soundeffect
     if team == 'Y':
-        madnum = ads.check_ad_blue()
         sound.points_sound_blue(points)
 
     if team == 'B':
-        madnum = ads.check_ad_yellow()
         sound.points_sound_yellow(points)
 
 
     # 5. final score after round
     if score_enabled:
         sound.score_sound()
-
-    # 6. maybe play an ad
-
-    if madnum != None:
-        sound.play_ad(*madnum)
 
     # print(f"Tag: {team}_{player}_{num}")
 
