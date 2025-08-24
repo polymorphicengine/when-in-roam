@@ -5,9 +5,9 @@ import config
 
 piper = config.piper_dir + "piper/piper"
 
-models_english = [config.piper_dir + "/models/en/en_US-john-medium.onnx"
-                 ,config.piper_dir + "/models/en/en_GB-alan-medium.onnx"
-                 ,config.piper_dir + "/models/en/en_GB-alba-medium.onnx"
+models_english = [config.piper_dir + "/models/en/en_US-bryce-medium.onnx"
+                 ,config.piper_dir + "/models/en/en_US-ryan-high.onnx"
+                 ,config.piper_dir + "/models/en/en_US-hfc_female-medium.onnx"
                  ,config.piper_dir + "/models/en/en_US-amy-medium.onnx"]
 models_hungarian = [config.piper_dir + "/models/hu/hu_HU-anna-medium.onnx"
                    ,config.piper_dir + "/models/hu/hu_HU-berta-medium.onnx"
