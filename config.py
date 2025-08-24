@@ -1,5 +1,5 @@
 # game configuration
-max_secrets = 2
+max_secrets = 9
 
 # set period of announcing that team is ready to start (in minutes)
 ready_to_start_period = 3
