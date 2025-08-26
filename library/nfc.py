@@ -28,8 +28,8 @@ def scan():
         if uid is not None:
             break
 
-    key = b"\xff\xff\xff\xff\xff\xff"
-    pn532.mifare_classic_authenticate_block(uid, 4, MIFARE_CMD_AUTH_B, key)
+    # key = b"\xff\xff\xff\xff\xff\xff"
+    # pn532.mifare_classic_authenticate_block(uid, 4, MIFARE_CMD_AUTH_B, key)
 
     data = pn532.mifare_classic_read_block(4)
 
@@ -74,10 +74,10 @@ def write_once(team, player, num):
             if uid is not None:
                 break
 
-        key = b"\xff\xff\xff\xff\xff\xff"
-        authenticated = pn532.mifare_classic_authenticate_block(uid, 4, MIFARE_CMD_AUTH_B, key)
-        if not authenticated:
-            print("Authentication failed!")
+        # key = b"\xff\xff\xff\xff\xff\xff"
+        # authenticated = pn532.mifare_classic_authenticate_block(uid, 4, MIFARE_CMD_AUTH_B, key)
+        # if not authenticated:
+            # print("Authentication failed!")
 
         data = bytearray(16)
         data[0] = ord(team)
