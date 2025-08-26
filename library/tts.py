@@ -29,7 +29,7 @@ def tts(text, team, num):
 
   model = models[num % len(models)]
 
-  output = config.sounds_dir + f"game/1-2_SECRET/{team}_SECRET_{num+1}.wav"
+  output = config.sounds_dir + f"game/1-2-3_SECRET/{team}_SECRET_{num+1}.wav"
 
   process = subprocess.Popen([piper,"--model", model, "--output_file", output], stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, text=True)
   process.communicate(input = text)
