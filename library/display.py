@@ -17,6 +17,9 @@ def display_loop():
     fullscreen = True
     pygame.init()
     pygame.camera.init()
+    blue_color = (49,143,170)
+    yellow_color = (245,255,80)
+    lila_color = (160,120,180)
 
     if fullscreen:
         resolution = (pygame.display.Info().current_w, pygame.display.Info().current_h)
@@ -27,69 +30,88 @@ def display_loop():
     halftime_image = pygame.image.load(config.video_dir + 'HALFTIME_BACKGROUND.jpg')
 
     # text to render on webcam feed
-    font = pygame.font.SysFont('Arial', 250, bold=True)
+    font = pygame.font.SysFont('Arial', 130, bold=True)
+    number_font = pygame.font.SysFont('Arial', 750, bold=True)
 
     width, height = pygame.display.get_surface().get_size()
 
     # start webcam
-    # cam = pygame.camera.Camera('/dev/video0')
-    # cam.start()
+    cam = pygame.camera.Camera('/dev/video0')
+    cam.start()
 
     def text_even_the_odds():
         return font.render("EVENING THE ODDS", False, (255, 0, 0))
 
     def text_shiners_won():
-        return font.render("THE SHINERS WON THE ROAMING TOURNAMENT", False, (0, 255, 0))
+        return font.render("THE SHINERS WON THE ROAMING TOURNAMENT", False, yellow_color)
 
     def text_surfers_won():
-        return font.render("THE SURFERS WON THE ROAMING TOURNAMENT", False, (0, 0, 255))
+        return font.render("THE SURFERS WON THE ROAMING TOURNAMENT", False, blue_color)
 
     def text_blue_score(points):
-        return font.render(f'The Surfers Scored {points} points!', False, (0, 0, 255))
+        return font.render(f'The SURFERS scored {points} points!', False, blue_color)
 
     def text_yellow_score(points):
-        return font.render(f'The Shiners Scored {points} points!', False, (255, 255, 0))
+        return font.render(f'The SHINERS scored {points} points!', False, yellow_color)
 
     # render the current score
     def display_score():
         yellow = score.get_score_yellow()
         blue = score.get_score_blue()
 
-        sc_y = font.render(f'{yellow}', False, (255, 255, 0))
-        sc_b = font.render(f'{blue}', False, (0, 0, 255))
+        yellow = 13
+        blue = 15
 
-        display.blit(sc_y, (sc_y.get_width(), height/2))
-        display.blit(sc_b, (width - sc_b.get_width()*2, height/2))
+        sc_y = number_font.render(f'{yellow}', False, yellow_color)
+        sc_b = number_font.render(f'{blue}', False, blue_color)
+
+        display.blit(sc_y, (sc_y.get_width()/20, height/5))
+        display.blit(sc_b, (width - sc_b.get_width() - sc_b.get_width()/20, height/5))
 
     # display loop
     while True:
 
-        display.fill((0,0,0))
+        # display.fill((0,0,0))
+        cam_image = cam.get_image()
+        cam_image_full = pygame.transform.scale(cam_image, (width, height))
+        display.blit(cam_image_full, (0,0))
+
 
         display_score()
 
+
         if yellow_scored:
             text = text_yellow_score(score_amount)
-            display.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
+            display.blit(text, (width/2 - text.get_width()/2, text.get_height()/2))
 
         if blue_scored:
             text = text_blue_score(score_amount)
-            display.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
+            display.blit(text, (width/2 - text.get_width()/2, text.get_height()/2))
 
         if even_the_odds:
             text = text_even_the_odds()
-            display.blit(text, (width/2 - text.get_width()/2,height/3 - text.get_height()/2))
+            display.blit(text, (width/2 - text.get_width()/2, text.get_height()/2))
 
         if half_time:
             display.blit(halftime_image, (0,0))
 
         if shiners_won:
-            text = text_shiners_won()
-            display.blit(text, (width/2 - text.get_width()/2, height/3 - text.get_height()/2))
+            display.fill(lila_color)
+            shiners = font.render("THE SHINERS", False, yellow_color)
+            won = font.render("WON THE", False, yellow_color)
+            roaming = font.render("ROAMING TOURNAMENT!", False, yellow_color)
+            display.blit(shiners, (width/2 - shiners.get_width()/2, shiners.get_height()))
+            display.blit(won, (width/2 - won.get_width()/2, won.get_height()*3))
+            display.blit(roaming, (width/2 - roaming.get_width()/2, roaming.get_height()*5))
 
         if surfers_won:
-            text = text_surfers_won()
-            display.blit(text, (width/2 - text.get_width()/2, height/3 - text.get_height()/2))
+            display.fill(lila_color)
+            surfers = font.render("THE SURFERS", False, blue_color)
+            won = font.render("WON THE", False, blue_color)
+            roaming = font.render("ROAMING TOURNAMENT!", False, blue_color)
+            display.blit(surfers, (width/2 - surfers.get_width()/2, surfers.get_height()))
+            display.blit(won, (width/2 - won.get_width()/2, won.get_height()*3))
+            display.blit(roaming, (width/2 - roaming.get_width()/2, roaming.get_height()*5))
 
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
