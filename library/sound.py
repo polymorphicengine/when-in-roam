@@ -100,18 +100,18 @@ def half_time_music_background():
 ###########################################################
 
 def collected_all_sound_blue():
-    pygame.mixer.Sound(sounds_dir + "commentator/secret/TAG_B_s10.wav").play()
+    pygame.mixer.Sound(sounds_dir + "commentator/secret/TAG_B10.wav").play()
 
 def collected_all_sound_yellow():
-    pygame.mixer.Sound(sounds_dir + "commentator/secret/TAG_Y_s10.wav").play()
+    pygame.mixer.Sound(sounds_dir + "commentator/secret/TAG_Y10.wav").play()
 
 def collect_secret_sound_blue(num):
     # collect_secret_fx()
-    play_seq(pygame.mixer.Sound(sounds_dir + f"commentator/secret/TAG_B_s{num}.wav"))
+    play_seq(pygame.mixer.Sound(sounds_dir + f"commentator/secret/TAG_B{num}.wav"))
 
 def collect_secret_sound_yellow(num):
     # collect_secret_fx()
-    play_seq(pygame.mixer.Sound(sounds_dir + f"commentator/secret/TAG_Y_s{num}.wav"))
+    play_seq(pygame.mixer.Sound(sounds_dir + f"commentator/secret/TAG_Y{num}.wav"))
 
 def collect_secret_fx():
     play_seq(pygame.mixer.Sound(sounds_dir + 'fx/scan/collect_secret.wav'))
