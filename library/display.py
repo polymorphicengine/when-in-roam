@@ -59,14 +59,11 @@ def display_loop():
         yellow = score.get_score_yellow()
         blue = score.get_score_blue()
 
-        yellow = 13
-        blue = 15
-
         sc_y = number_font.render(f'{yellow}', False, yellow_color)
         sc_b = number_font.render(f'{blue}', False, blue_color)
 
-        display.blit(sc_y, (sc_y.get_width()/20, height/5))
-        display.blit(sc_b, (width - sc_b.get_width() - sc_b.get_width()/20, height/5))
+        display.blit(sc_b, (sc_b.get_width()/20, height/5))
+        display.blit(sc_y, (width - sc_y.get_width() - sc_y.get_width()/20, height/5))
 
     # display loop
     while True:
