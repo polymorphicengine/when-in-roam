@@ -16,7 +16,7 @@ last_game_score_condition = 16
 last_game_limit = 2
 
 # when true, tags can be triggered multiple times
-rescan_possible = True
+rescan_possible = False
 
 # after how many points to trigger ads
 # ads_repetition = 6
