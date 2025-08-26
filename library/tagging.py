@@ -1,4 +1,5 @@
 import library.nfc as nfc
+import library.player as p
 from flask import Flask, render_template, redirect, request
 import logging
 import config
@@ -45,6 +46,11 @@ def form():
 def scan():
     global output
     output = "Current TAG: " + str(nfc.scan())
+    return redirect('/')
+
+@app.route('/play')
+def play():
+    p.wait_for_scan()
     return redirect('/')
 
 def start_tagging():
