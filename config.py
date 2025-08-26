@@ -19,13 +19,12 @@ last_game_limit = 2
 rescan_possible = True
 
 # after how many points to trigger ads
-ads_repetition = 6
+# ads_repetition = 6
 
 # turn ads on / off
 play_ads = True
 
-start_card_id = bytearray(b'\xaaSn\x05')
-              # actual flag: bytearray(b'\x04X\xfb:@Y\x80')
+start_card_id = bytearray(b'\x04X\xfb:@Y\x80')
 
 piper_dir = "/home/martin/git/when-in-roam/piper/"
 
