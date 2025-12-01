@@ -23,20 +23,8 @@ def on_scan(team, player, num, score_enabled = True):
     # stop background
     sound.stop_background()
 
-    # render who scored and amount to display
-    if team == 'Y':
-        score.add_points_blue(points)
-        display.display_blue_score(points)
-    else:
-        score.add_points_yellow(points)
-        display.display_yellow_score(points)
-
     # 1. scan sound effect
     sound.scan_tag_sound()
-
-    # stop display of who scored
-    display.stop_scored_display()
-
 
     # 1.5 if a secret is revealed play the special fx before
     if is_secret:
@@ -49,6 +37,15 @@ def on_scan(team, player, num, score_enabled = True):
     if is_secret:
         sound.after_secret_sound()
 
+    # render who scored and amount to display
+    if points != 0:
+        if team == 'Y':
+            score.add_points_blue(points)
+            display.display_blue_score(points)
+        else:
+            score.add_points_yellow(points)
+            display.display_yellow_score(points)
+
     # 3. + 4. points message and soundeffect
     if team == 'Y':
         sound.points_sound_blue(points)
@@ -56,6 +53,8 @@ def on_scan(team, player, num, score_enabled = True):
     if team == 'B':
         sound.points_sound_yellow(points)
 
+    # stop display of who scored
+    display.stop_scored_display()
 
     # 5. final score after round
     if score_enabled:
@@ -72,9 +71,9 @@ def wait_for_last_scan():
 
 def on_last_scan(team, player, num, score_enabled = True):
     if team == 'Y':
-        score.make_shiners_win()
-    else:
         score.make_surfers_win()
+    else:
+        score.make_shiners_win()
 
 
 # there are two teams (Y and B) -> no need to decode
@@ -129,6 +128,6 @@ def number_score(num):
 # player C ->  3, 6 and 9
 def compute_secret_number(player, num):
     # returns 1 for A, 2 for B etc.
-    player_num = ord(player.lower()) - 96
+    player_num = min(ord(player.lower()) - 96, 3)
 
     return player_num + (num - 1)*3

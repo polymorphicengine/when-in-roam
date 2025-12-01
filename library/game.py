@@ -39,14 +39,16 @@ def first_game():
 
 def second_game():
     global second_game_round
+
     sound.start_game_two()
+
     while score.second_game_condition():
        second_game_round = second_game_round + 1
 
        if second_game_round > config.second_game_limit:
            score.even_second_game()
            display.display_even_the_odds()
-           sound.wait(2)
+           sound.overtime_adjustment()
            display.stop_even_the_odds_display()
            break
 
@@ -58,10 +60,11 @@ def half_time_show():
 
     # halftime show sound and image
     display.display_halftime()
-    sound.half_time_music()
+    sound.halftime()
     display.stop_halftime_display()
 
-    sound.play_ad(2)
+    # play the score once and switch on stretching background
+    sound.score_sound()
 
     sound.stretching_background()
 
@@ -78,15 +81,16 @@ def third_game():
 def last_game():
     global last_game_round
 
+    sound.start_match_point()
+
     while score.last_game_condition():
 
        last_game_round = last_game_round + 1
-       player.wait_for_scan()
 
        if last_game_round > config.last_game_limit:
            score.even_last_game()
            display.display_even_the_odds()
-           sound.wait(2)
+           sound.overtime_adjustment()
            display.stop_even_the_odds_display()
            break
        else:
@@ -99,6 +103,7 @@ def last_game():
         player.wait_for_last_scan()
 
 def outro():
+    sound.stop_background()
     if score.shiners_won():
         display.display_shiners()
         sound.play_outro_shiners()

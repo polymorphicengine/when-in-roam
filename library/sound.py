@@ -14,6 +14,7 @@ def wait(s):
 # play sound and wait until it is finished
 def play_seq(s):
     s.play()
+    s.set_volume(1)
     wait(s.get_length())
 
 def stop_background():
@@ -53,6 +54,9 @@ def scan_tag_sound():
 def before_secret_sound():
     play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/SECRET_REVEALED.wav'))
 
+def overtime_adjustment():
+    play_seq(pygame.mixer.Sound(sounds_dir + 'commentator/EVENING_ODDS.wav'))
+
 def after_secret_sound():
     play_seq(pygame.mixer.Sound(sounds_dir + 'fx/AFTER_SECRET.wav'))
 
@@ -87,7 +91,7 @@ def last_point_background():
     pygame.mixer.music.load(sounds_dir + 'background/6_Last_Point.wav')
     pygame.mixer.music.play(loops=-1)
 
-def half_time_music():
+def halftime():
     play_seq(pygame.mixer.Sound(sounds_dir + 'halftime/HALFTIME.wav'))
 
 def half_time_music_background():

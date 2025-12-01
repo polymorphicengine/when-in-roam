@@ -101,6 +101,6 @@ def check_valid(data):
     player = chr(data[1])
     number = data[2]
     t = team in ['B', 'Y']
-    p = player in ['A', 'B', 'C']
+    p = player in ['A', 'B', 'C', 'D']
     n = number <= 6 and number >= 1
     return (t and p and n)

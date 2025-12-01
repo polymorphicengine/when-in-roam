@@ -27,13 +27,14 @@ def display_loop():
     else:
         display = pygame.display.set_mode((640,480))
 
-    halftime_image = pygame.image.load(config.video_dir + 'HALFTIME_BACKGROUND.jpg')
+    halftime_image_unscaled = pygame.image.load(config.video_dir + 'HALFTIME_BACKGROUND.jpg')
 
     # text to render on webcam feed
     font = pygame.font.SysFont('Arial', 130, bold=True)
     number_font = pygame.font.SysFont('Arial', 750, bold=True)
 
     width, height = pygame.display.get_surface().get_size()
+    halftime_image = pygame.transform.scale(halftime_image_unscaled, (width, height))
 
     # start webcam
     cam = pygame.camera.Camera('/dev/video0')
